@@ -129,15 +129,17 @@ export default function App() {
     <div className="app-shell">
       <nav className="navbar">
         <div className="nav-brand" onClick={goDashboard}>
-          <span className="nav-logo">✉</span> MailBlast
+          <span className="nav-logo">✉️</span> MailBlast <span style={{ color: '#6366f1', fontSize: 12, fontWeight: 700, background: '#1e1b4b', padding: '2px 8px', borderRadius: 99, marginLeft: 4 }}>2.0</span>
         </div>
         <div className="nav-links">
-          <button className={`nav-btn ${page === 'dashboard' ? 'active' : ''}`} onClick={goDashboard}>Campaigns</button>
-          <button className={`nav-btn ${page === 'attendance' ? 'active' : ''}`} onClick={() => setPage('attendance')}>Attendance</button>
-          <button className="nav-btn primary" onClick={goCompose}>+ New campaign</button>
+          <button className={`nav-btn ${page === 'dashboard' ? 'active' : ''}`} onClick={goDashboard}>📊 Campaigns</button>
+          <button className={`nav-btn ${page === 'attendance' ? 'active' : ''}`} onClick={() => setPage('attendance')}>📋 Attendance</button>
+        </div>
+        <div className="nav-links" style={{ flex: 'none' }}>
+          <button className="nav-btn primary" onClick={goCompose}>+ New Campaign</button>
         </div>
         <div className="nav-user">
-          <img src={user.picture} alt={user.name} className="avatar" />
+          {user.picture && <img src={user.picture} alt={user.name} className="avatar" />}
           <span className="user-name">{user.name}</span>
           <button className="nav-btn small" onClick={handleLogout}>Sign out</button>
         </div>

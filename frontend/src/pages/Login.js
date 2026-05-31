@@ -1,26 +1,27 @@
 import React from 'react';
-
 const BACKEND = process.env.REACT_APP_API_URL || 'http://localhost:3001';
-
 export default function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <div className="login-logo">✉</div>
-        <h1>MailBlast</h1>
-        <p>Bulk Gmail sender — send to hundreds with one click</p>
+        <div className="login-logo">✉️</div>
+        <h1>MailBlast 2.0</h1>
+        <p>Professional email campaigns, beautifully simple</p>
         <a href={`${BACKEND}/auth/google`} className="google-btn">
-          <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" />
+          <svg width="18" height="18" viewBox="0 0 18 18">
+            <path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z"/>
+            <path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z"/>
+            <path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z"/>
+            <path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.3z"/>
+          </svg>
           Sign in with Google
         </a>
-        <div style={{ marginTop: 16, padding: '12px 16px', background: '#e8f5e9', borderRadius: 8, fontSize: 13, color: '#2e7d32' }}>
-          🔐 Face + eye + blink verification required after login
-        </div>
         <ul className="feature-list">
-          <li>✓ Upload CSV / Excel / paste emails</li>
-          <li>✓ Rich text message with PDF attachment</li>
-          <li>✓ Schedule send for any date &amp; time</li>
-          <li>✓ Track who opened your email</li>
+          <li>✅ Dark mode professional UI</li>
+          <li>✅ Email templates & A/B testing</li>
+          <li>✅ Real-time analytics & charts</li>
+          <li>✅ Schedule campaigns</li>
+          <li>✅ Open rate tracking</li>
         </ul>
       </div>
     </div>
