@@ -10,7 +10,7 @@ const auth = axios.create({
   baseURL: BASE + '/auth',
   withCredentials: true
 });
-export const getMe = () => auth.get('/me').then(r => r.data.user);
+export const getMe = () => auth.get('/me').then(r => r.data);
 export const resendAll = (id) => new EventSource(`${BASE}/campaigns/${id}/resend-all`, { withCredentials: true });
 export const logout = () => auth.post('/logout');
 export const getCampaigns = () => api.get('/').then(r => r.data);
@@ -42,3 +42,4 @@ export const getResendRules = (id) => api.get(`/${id}/resend-rules`).then(r => r
 export const createResendRule = (id, type, delay_minutes) => api.post(`/${id}/resend-rules`, { type, delay_minutes }).then(r => r.data);
 export const deleteResendRule = (id, ruleId) => api.delete(`/${id}/resend-rules/${ruleId}`).then(r => r.data);
 export const deleteCampaign = (id) => api.delete(`/${id}`).then(r => r.data);
+
