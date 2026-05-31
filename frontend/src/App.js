@@ -105,9 +105,7 @@ export default function App() {
           </button>
         </div>
       </div>
-      {showChangePwd && <ChangePassword onClose={() => setShowChangePwd(false)} />}
-    ):
-  }
+    );
 }
 
   // First time — set password
@@ -155,8 +153,9 @@ export default function App() {
         {page === 'detail'     && <CampaignDetail id={selectedId} onBack={goDashboard} />}
         {page === 'attendance' && <Attendance onBack={goDashboard} />}
       </main>
-    </div>
       {showChangePwd && <ChangePassword onClose={() => setShowChangePwd(false)} />}
-    ):
-  }
+    </div>
+  );
 }
+
+
