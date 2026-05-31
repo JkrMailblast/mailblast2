@@ -184,4 +184,20 @@ router.post('/logout', (req, res) => {
   res.json({ ok: true });
 });
 
+
+// Change password
+router.post('/change-password', async (req, res) => {
+  if (!req.session.user) return res.status(401).json({ error: 'Not authenticated' });
+  const { current_password, new_password } = req.body;
+  if (!new_password || new_password.length < 6)
+    return res.status(400).json({ error: 'New password must be at least 6 characters' });
+  const { rows } = await pool.query('SELECT mb_password FROM users WHERE email=$1', [req.session.user.email]);
+  if (!rows[0] || !rows[0].mb_password)
+    return res.status(400).json({ error: 'No password set' });
+  const match = await bcrypt.compare(current_password, rows[0].mb_password);
+  if (!match) return res.status(401).json({ error: 'Current password is wrong' });
+  const hashed = await bcrypt.hash(new_password, 10);
+  await pool.query('UPDATE users SET mb_password=$1 WHERE email=$2', [hashed, req.session.user.email]);
+  res.json({ ok: true });
+});
 module.exports = router;

@@ -42,4 +42,4 @@ export const getResendRules = (id) => api.get(`/${id}/resend-rules`).then(r => r
 export const createResendRule = (id, type, delay_minutes) => api.post(`/${id}/resend-rules`, { type, delay_minutes }).then(r => r.data);
 export const deleteResendRule = (id, ruleId) => api.delete(`/${id}/resend-rules/${ruleId}`).then(r => r.data);
 export const deleteCampaign = (id) => api.delete(`/${id}`).then(r => r.data);
-
+export const changePassword = (current_password, new_password) => auth.post('/change-password', { current_password, new_password }).then(r => r.data);

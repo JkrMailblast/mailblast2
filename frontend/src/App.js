@@ -7,6 +7,7 @@ import CampaignDetail from './pages/CampaignDetail';
 import Attendance from './pages/Attendance';
 import SetPassword from './pages/SetPassword';
 import VerifyPassword from './pages/VerifyPassword';
+import ChangePassword from './pages/ChangePassword';
 import './App.css';
 
 const BACKEND = process.env.REACT_APP_API_URL || 'http://localhost:3001';
@@ -17,6 +18,7 @@ export default function App() {
   const [page, setPage] = useState('dashboard');
   const [selectedId, setSelectedId] = useState(null);
   const [passwordStatus, setPasswordStatus] = useState(null);
+  const [showChangePwd, setShowChangePwd] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -103,8 +105,10 @@ export default function App() {
           </button>
         </div>
       </div>
-    );
+      {showChangePwd && <ChangePassword onClose={() => setShowChangePwd(false)} />}
+    ):
   }
+}
 
   // First time — set password
   if (passwordStatus && !passwordStatus.hasPassword) {
@@ -141,6 +145,7 @@ export default function App() {
         <div className="nav-user">
           {user.picture && <img src={user.picture} alt={user.name} className="avatar" />}
           <span className="user-name">{user.name}</span>
+          <button className="nav-btn small" onClick={() => setShowChangePwd(true)} style={{marginRight:4}}>🔑 Password</button>
           <button className="nav-btn small" onClick={handleLogout}>Sign out</button>
         </div>
       </nav>
@@ -151,5 +156,7 @@ export default function App() {
         {page === 'attendance' && <Attendance onBack={goDashboard} />}
       </main>
     </div>
-  );
+      {showChangePwd && <ChangePassword onClose={() => setShowChangePwd(false)} />}
+    ):
+  }
 }
