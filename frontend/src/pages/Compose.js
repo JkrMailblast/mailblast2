@@ -534,17 +534,6 @@ export default function Compose({ onSaved, onBack }) {
           </div>
 
           {/* Test Email */}
-          <div className="form-group mt-md">
-            <label>🧪 Send Test Email First (recommended)</label>
-            <div className="input-row">
-              <input type="email" value={testEmail} onChange={e => setTestEmail(e.target.value)}
-                placeholder="test@example.com" />
-              <button className="btn-outline" onClick={handleTestSend}>
-                {testSent ? '✅ Sent!' : 'Send Test'}
-              </button>
-            </div>
-          </div>
-
           <div className="divider" />
 
           {/* Schedule */}
