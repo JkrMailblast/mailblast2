@@ -33,11 +33,11 @@ async function start() {
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production",
-      sameSite: 'lax',
-      httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    }
+  secure: true,
+  sameSite: 'none',
+  httpOnly: true,
+  maxAge: 7 * 24 * 60 * 60 * 1000
+}
   }));
 
   const authRoutes = require('./routes/auth');
