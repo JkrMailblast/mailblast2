@@ -70,8 +70,13 @@ router.get('/google/callback', async (req, res) => {
     `, [user.email, user.name, user.picture]);
 
     req.session.save((err) => {
-  if (err) console.error('Session save error:', err);
-  res.redirect(`${process.env.FRONTEND_URL}?auth=success&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}&picture=${encodeURIComponent(user.picture)}`);
+      if (err) console.error('Session save error:', err);
+      res.redirect(`${process.env.FRONTEND_URL}?auth=success&email=${encodeURIComponent(user.email)}&name=${encodeURIComponent(user.name)}&picture=${encodeURIComponent(user.picture)}`);
+    });
+  } catch (err) {
+    console.error('OAuth callback error:', err);
+    res.redirect(`${process.env.FRONTEND_URL}?auth=error`);
+  }
 });
 
 // Mobile: verify Google access token and return JWT
